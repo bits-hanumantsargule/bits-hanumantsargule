@@ -4,7 +4,6 @@ import { Grid, GridColumn as Column} from "@progress/kendo-react-grid";
 import totalSelector from "../selector/totalUsersSelector";
 import { connect } from "react-redux";
 import { fetchUsers,loading } from '../action';
-// import Loader from './Loader';
 import { Oval } from  'react-loader-spinner'
 
 
@@ -16,6 +15,7 @@ class UsersList extends Component {
       skip: 0,
       pageNo: 1,
     };
+    this.onPageChange = this.onPageChange.bind(this);
   }
   componentDidMount(){
     this.props.loading();
@@ -43,19 +43,20 @@ class UsersList extends Component {
       <>
       {this.props.isloading && <Oval color="#00BFFF" height={30} width={30} /> }
          {!this.props.isloading && (
-      <div>    
-
+      <div> 
+      Page Count : {this.state.pageNo}
+      Page skip : {this.state.skip}   
 <Grid
         style={{ height: "440px", }}
         rowHeight={40}
         data={
-              this.props.users ? this.props.users.slice(
+                this.props.users ? this.props.users.slice(
                 this.state.skip,this.state.skip + 10
               ): null
         }
-        pageSize={10}
+        pageSize={20}
         total={this.props.total}
-        skip={this.skip}
+        skip={this.state.skip}
         scrollable={"virtual"}
         onPageChange={this.onPageChange}>
         <Column field="id" title="ID" />
@@ -79,9 +80,11 @@ const mapStateToProps = state => {
 
 // const mapDispatchToProps = dispatch => {
 //   return {
-//     fetchUsers: () => dispatch(fetchUsers())
+//     fetchUsers,
+//     loading
 //   }
 // }
+//
 //, loadingData 
 // export default connect(
 //   mapStateToProps,
