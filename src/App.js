@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-do
 import './App.css';
 import Home from './ConnorsGroup.Client.React/features/app/users/components/Home';
 import UsersList from './ConnorsGroup.Client.React/features/app/users/components/UsersList';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App () {
   return (

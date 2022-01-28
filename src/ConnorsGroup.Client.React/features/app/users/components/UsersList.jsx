@@ -4,7 +4,8 @@ import { Grid, GridColumn as Column} from "@progress/kendo-react-grid";
 import totalSelector from "../selector/totalUsersSelector";
 import { connect } from "react-redux";
 import { fetchUsers,loading } from '../action';
-import Loader from './Loader';
+// import Loader from './Loader';
+import { Oval } from  'react-loader-spinner'
 
 
 class UsersList extends Component {
@@ -25,7 +26,7 @@ class UsersList extends Component {
     this.setState({
       skip: event.page.skip,
     });
-   // if (event.page.skip % 10 === 0) {
+    if (event.page.skip % 10 === 0) {
       this.setState(
         {
           pageNo: this.state.pageNo + 1,
@@ -35,16 +36,17 @@ class UsersList extends Component {
           this.props.fetchUsers(this.state.pageNo);
         }
       );
-   // }
+    }
   };
   render() {
     return (
       <>
-      {this.props.isloading && <Loader /> }
+      {this.props.isloading && <Oval color="#00BFFF" height={30} width={30} /> }
          {!this.props.isloading && (
       <div>    
+
 <Grid
-        style={{ height: "640px", }}
+        style={{ height: "440px", }}
         rowHeight={40}
         data={
               this.props.users ? this.props.users.slice(

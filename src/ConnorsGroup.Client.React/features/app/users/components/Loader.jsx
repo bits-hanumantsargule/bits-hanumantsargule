@@ -3,9 +3,11 @@ import { Spinner } from "react-bootstrap";
 class Loader extends Component {
   render() {
     return (
-      <div className="d-flex justify-content-center">
-      <Spinner animation="border" variant="primary" size="bg" />
+      <div>
+      <div className="d-flex flex-row">
+      <Spinner animation="border" variant="primary" size="bg" class="p-2"/>
     </div>
+     </div>
     );
   }
 }

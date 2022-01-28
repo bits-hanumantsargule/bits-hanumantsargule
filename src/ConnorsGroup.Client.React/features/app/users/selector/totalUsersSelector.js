@@ -1,2 +1,2 @@
-const useTotalSelector = (state) => state.reducer.total;
-export default useTotalSelector;
+const totalSelector = (state) => state.reducer.total;
+export default totalSelector;
