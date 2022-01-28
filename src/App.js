@@ -21,8 +21,8 @@ function App () {
              </ul>
            </div>
          </nav>
-         </div>
-         <div className="App">
+        
+
        <Switch>
          <Route exact path='/Home' component={Home}></Route> 
          <Route exact path='/UsersList' component={UsersList}></Route> 
