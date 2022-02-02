@@ -20,10 +20,10 @@ export const fetchUsers =(pageNo = 1) =>
      dispatch(fetchUsersSuccess(res))
   };
 
-export const fetchUsersSuccess = users => {
+export const fetchUsersSuccess = data => {
   return {
     type: 'FETCH_USERS_SUCCESS',
-    payload: users
+    payload: data
   }
 }
 

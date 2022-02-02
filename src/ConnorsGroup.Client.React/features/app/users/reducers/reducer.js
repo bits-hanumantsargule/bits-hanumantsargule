@@ -3,18 +3,34 @@ import { Map } from "immutable";
 
 const initialState = Map({users: [], total: [],loading: false});
 
+
 const reducer = (state = initialState, action) => {
+
   switch (action.type) {
     case 'FETCH_USERS_REQUEST':
       return {
         ...state,
         loading: true
       }
-    case 'FETCH_USERS_SUCCESS':
+    case 'FETCH_USERS_SUCCESS':  
+       var getResultUser = state.users;
+        if(getResultUser === undefined){
+          // console.log('May Be');
+          getResultUser = action.payload.data.data;
+        }else{
+          // console.log('logMain');
+          console.log(' initial '+getResultUser.length);
+          action.payload.data.data.forEach(function(item){
+            getResultUser.push(item)
+          })
+          console.log(' after push '+getResultUser.length);
+        }
+        // .concat(item)
       return {
-        loading: false,
-        users: action.payload.data.data,
+         ...state,
+         users:getResultUser,
         total: action.payload.data.meta.pagination.total,
+        loading: false,
       }
     case 'FETCH_USERS_FAILURE':
       return {
