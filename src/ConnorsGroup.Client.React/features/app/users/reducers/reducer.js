@@ -17,11 +17,9 @@ const reducer = (state = initialState, action) => {
         if(getResultUser === undefined){
           getResultUser = action.payload.data.data;
         }else{
-         // console.log(' initial '+getResultUser.length);
           action.payload.data.data.forEach(function(item){
             getResultUser.push(item)
           })
-        //  console.log(' after push '+getResultUser.length);
         }
       return {
          ...state,
