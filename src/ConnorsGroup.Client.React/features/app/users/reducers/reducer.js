@@ -15,17 +15,14 @@ const reducer = (state = initialState, action) => {
     case 'FETCH_USERS_SUCCESS':  
        var getResultUser = state.users;
         if(getResultUser === undefined){
-          // console.log('May Be');
           getResultUser = action.payload.data.data;
         }else{
-          // console.log('logMain');
-          console.log(' initial '+getResultUser.length);
+         // console.log(' initial '+getResultUser.length);
           action.payload.data.data.forEach(function(item){
             getResultUser.push(item)
           })
-          console.log(' after push '+getResultUser.length);
+        //  console.log(' after push '+getResultUser.length);
         }
-        // .concat(item)
       return {
          ...state,
          users:getResultUser,
